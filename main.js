@@ -157,7 +157,9 @@ function writeToLog(who, what, x, y, target, value) {
 				//break;
 		}
 	}
-	// convert x & y??
+	// convert x & y to unity coordinates
+	x = ((90f*x)/1700f) - 55.59f;
+	y = ((70f*y)/1840f) - 7.61f;
 	// convert names??
 	switch (what) {
 		case "LOCOMOTIONPT":
