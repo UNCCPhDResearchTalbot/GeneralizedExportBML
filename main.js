@@ -311,7 +311,8 @@ function startGame() {
 		}
 		if(!WAITING) {
 			//console.log("done waiting for all, moving on");
-			writeToLog("BREAK", "BREAK", null, null, "BREAK", null);
+			// CJT 7/7/16 remove so don't write bad lines 
+			// writeToLog("BREAK", "BREAK", null, null, "BREAK", null);
 			// CJT 7/7/16 writeXYs();
 			parseLine();
 		}
