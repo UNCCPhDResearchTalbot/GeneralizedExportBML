@@ -30,6 +30,7 @@ var numcalls = 0;
 var mvmtlines = null;
 var mytype = null;
 var myctr = null;
+var prevmsglog = '';
 
 // **************************************************************************************
 // UPDATE THESE VARIABLES FOR EACH SCRIPT
@@ -158,47 +159,53 @@ function writeToLog(who, what, x, y, target, value) {
 		}
 	}
 	// convert x & y to unity coordinates
-	x = ((90f*x)/1700f) - 55.59f;
-	y = ((70f*y)/1840f) - 7.61f;
+	x = (((90 * x)/1700) - 55.59).toFixed(2);
+	y = (((70 * y)/1840) - 7.61).toFixed(2);
 	// convert names??
+	if (what == "BREAK" && prevmsglog != '') {
+		bmllog.write('N'+prevmsglog);
+	} else if (what != "BREAK" && prevmsglog != '') {
+		bmllog.write('Y'+prevmsglog);
+	}
 	switch (what) {
 		case "LOCOMOTIONPT":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion target="'+x+' '+y+'" type="basic" manner="walk" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion target="'+x+' '+y+'" type="basic" manner="walk" /></bml></act>\n';
 			break;
 		case "LOCOMOTION":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion target="'+target+'" type="basic" manner="walk" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion target="'+target+'" type="basic" manner="walk" /></bml></act>\n';
 			break;
 		case "SAY":
-			bmllog.write('N\tSPEAK\t'+who+'\t'+target+
+			prevmsglog='\tSPEAK\t'+who+'\t'+target+
 				'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">'+
-				value+'</speech></bml></act>\n');
+				value+'</speech></bml></act>\n';
 			break;
 		case "BREAK":
-			bmllog.write('==========================================================================================\n');
+			prevmsglog='';
+			//bmllog.write('==========================================================================================\n');
 			break;
 		case "FOLLOW":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion sbm:follow="'+target+'" type="basic" manner="walk" proximity="50"/></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><locomotion sbm:follow="'+target+'" type="basic" manner="walk" proximity="50"/></bml></act>\n';
 			break;
 		case "PICKUP":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><sbm:reach sbm:action="pick-up" target="'+target+'"/></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><sbm:reach sbm:action="pick-up" target="'+target+'"/></bml></act>\n';
 			break;
 		case "GAZEPT":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gaze target="'+x+' '+y+'" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gaze target="'+x+' '+y+'" /></bml></act>\n';
 			break;
 		case "GAZE":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gaze target="'+target+'" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gaze target="'+target+'" /></bml></act>\n';
 			break;
 		case "POINTPT":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gesture lexeme="POINT" target="'+x+' '+y+'" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gesture lexeme="POINT" target="'+x+' '+y+'" /></bml></act>\n';
 			break;
 		case "POINT":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gesture lexeme="POINT" target="'+target+'" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><gesture lexeme="POINT" target="'+target+'" /></bml></act>\n';
 			break;
 		case "PUTDOWN":
-			bmllog.write('Y\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><sbm:reach sbm:action="put-down" target="'+target+'" /></bml></act>\n');
+			prevmsglog='\tMOVE\t'+who+'\t'+target+'\t<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="'+who+'" role="actor" /><bml><sbm:reach sbm:action="put-down" target="'+target+'" /></bml></act>\n';
 			break;
 		default:
-			bmllog.write('INVALID!!!\t'+who+'\t'+what+'\t'+x+'\t'+y+'\t'+target+'\t'+value+'\n');
+			prevmsglog='\tINVALID!!!\t'+who+'\t'+what+'\t'+x+'\t'+y+'\t'+target+'\t'+value+'\n';
 			break;
 		
 	}
@@ -311,8 +318,8 @@ function startGame() {
 		}
 		if(!WAITING) {
 			//console.log("done waiting for all, moving on");
-			// CJT 7/7/16 remove so don't write bad lines 
-			// writeToLog("BREAK", "BREAK", null, null, "BREAK", null);
+			
+			writeToLog("BREAK", "BREAK", null, null, "BREAK", null);
 			// CJT 7/7/16 writeXYs();
 			parseLine();
 		}
