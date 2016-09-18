@@ -294,8 +294,8 @@ function startGame(gs) {
 	var skull2 = gs.addEntity(new Pawn('SKULL2', 1571 + 5, 914, '0, 0, 0', '234, 234, 234', 'X'));
 	var lantern = gs.addEntity(new Pawn('LANTERN', 1041, 100, '0, 0, 0', '234, 234, 234', 'L'));
 	*/
-	var trunk = gs.addEntity(new Pawn('TRUNK', 1616.70, 1382.89, '0, 0, 0', '234, 234, 234', 'T'));
-	var box = gs.addEntity(new Pawn('BOX', 1522.25, 1382.89, '0, 0, 0', '234, 234, 234', 'B'));
+	var trunk = gs.addEntity(new Pawn('TRUNK', 1616.70, 1382.89, '0, 0, 0', '234, 234, 234', 'T');
+	var box = gs.addEntity(new Pawn('BOX', 1522.25, 1382.89, '0, 0, 0', '234, 234, 234', 'B');
 
 	
 	// create characters
@@ -309,8 +309,8 @@ function startGame(gs) {
 	var yasha = gs.addEntity(new Character('YASHA', 861.14, 1120.03, 0, '171,130,255', '85,26,139'));
 	var epikhodov = gs.addEntity(new Character('EPIKHODOV', 1994.47, 1251.46, 0, '0,205,0', '0,100,0'));
 	var trofimov = gs.addEntity(new Character('TROFIMOV', 1616.70, 1514.32, 0, '233,150,122', '139,69,0'));
-	var lopakhin = gs.addEntity(new Character('LOPAKHIN', 1522.25, 1461.74, 0, '155,48,255', '139,69,0')); // purple
-	var varya = gs.addEntity(new Character('VARYA', 105.59, 1645.74, 0, '238,238,0', '139,69,0')); // yellow
+	var lopakhin = gs.addEntity(new Character('LOPAKHIN', 1522.25, 1461.74, 0, '233,150,122', '139,69,0'));
+	var varya = gs.addEntity(new Character('VARYA', 105.59, 1645.74, 0, '233,150,122', '139,69,0'));
 
 
 // ************************************************************************************************

@@ -4,11 +4,11 @@ Mother asks if you will stop them cutting down the orchard until she has gone aw
 
 TROFIMOV
 Yes, really, you ought to have enough tact not to do that. 
-(Exit.)
+(Exits.)
 
 LOPAKHIN
 All right, all right . . . yes, he's right. 
-(Exit.)
+(Exits.)
 
 ANYA
 Has Fiers been sent to the hospital?
@@ -17,7 +17,7 @@ YASHA
 I gave the order this morning. I suppose they've sent him.
 
 ANYA
-(To EPIKHODOV, who crosses the room) 
+(To EPIKHODOV, EPIKHODOV crosses the room) 
 Simeon Panteleyevitch, please make inquiries if Fiers has been sent to the hospital.
 
 YASHA
@@ -46,4 +46,4 @@ Why didn't they take the letter to the doctor?
 
 ANYA
 It'll have to be sent after him. 
-(Exit.)
+(Exits.)

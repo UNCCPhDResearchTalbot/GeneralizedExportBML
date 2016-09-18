@@ -1,0 +1,101 @@
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Mother asks if you will stop them cutting down the orchard until she has gone away.</speech></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">TROFIMOV</speech></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Yes, really, you ought to have enough tact not to do that.</speech></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Mother asks if you will stop them cutting down the orchard until she has gone away.</speech></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+N	MOVE	ANYA	DOOR	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><bml><locomotion target="DOOR" type="basic" manner="walk" /></bml></act>
+N	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	SPEAK	LOPAKHIN	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">All right, all right . . . yes, he's right.</speech></bml></act>
+Y	MOVE	YASHA	LOPAKHIN	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="LOPAKHIN" /></bml></act>
+Y	MOVE	EPIKHODOV	LOPAKHIN	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="LOPAKHIN" /></bml></act>
+N	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Has Fiers been sent to the hospital?</speech></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+N	SPEAK	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Yes, really, you ought to have enough tact not to do that.</speech></bml></act>
+N	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	SPEAK	YASHA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">I gave the order this morning. I suppose they've sent him.</speech></bml></act>
+Y	MOVE	EPIKHODOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="47.25 40.00" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+N	MOVE	LOPAKHIN	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="22.25 48.00" /></bml></act>
+Y	MOVE	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><bml><gaze target="-47.25 50.00" /></bml></act>
+Y	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Simeon Panteleyevitch, please make inquiries if Fiers has been sent to the hospital.</speech></bml></act>
+Y	MOVE	YASHA	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	EPIKHODOV	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+Y	MOVE	LOPAKHIN	ANYA	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><gaze target="ANYA" /></bml></act>
+N	MOVE	TROFIMOV	STAGERIGHT	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><locomotion target="STAGERIGHT" type="basic" manner="walk" /></bml></act>
+N	SPEAK	LOPAKHIN	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">All right, all right . . . yes, he's right.</speech></bml></act>
+N	MOVE	LOPAKHIN	STAGERIGHT	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LOPAKHIN" role="actor" /><bml><locomotion target="STAGERIGHT" type="basic" manner="walk" /></bml></act>
+N	SPEAK	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">Has Fiers been sent to the hospital?</speech></bml></act>
+N	MOVE	ANYA	EPIKHODOV	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><bml><locomotion sbm:follow="EPIKHODOV" type="basic" manner="walk" proximity="50"/></bml></act>
+Y	SPEAK	YASHA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">I told Egor this morning. What's the use of asking ten times!</speech></bml></act>
+Y	MOVE	ANYA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="ANYA" role="actor" /><bml><gaze target="41.79 40.55" /></bml></act>
+Y	MOVE	EPIKHODOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="EPIKHODOV" role="actor" /><bml><gaze target="47.25 40.00" /></bml></act>
+Y	MOVE	TROFIMOV	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="TROFIMOV" role="actor" /><bml><gaze target="27.25 50.00" /></bml></act>
+N	SPEAK	YASHA	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="YASHA" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">I gave the order this morning. I suppose they've sent him.</speech></bml></act>

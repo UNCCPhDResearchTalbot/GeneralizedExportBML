@@ -1,1 +1,0 @@
-Y	MOVE	GRAVEDIGGER1	LANTERN	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="GRAVEDIGGER1" role="actor" /><bml><sbm:reach sbm:action="pick-up" target="LANTERN"/></bml></act>
