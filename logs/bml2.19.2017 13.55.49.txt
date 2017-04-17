@@ -1,0 +1,2 @@
+N	SPEAK	CHARLEY	XXXXX	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="CHARLEY" role="actor" /><fml><turn start="take" end="give" /><affect type="neutral" target="addressee"></affect><culture type="neutral"></culture><personality type="neutral"></personality></fml><bml><speech id="sp1" ref="" type="application/ssml+xml">It's getting dark, Linda.</speech></bml></act>
+N	MOVE	LINDA	GRAVE	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="LINDA" role="actor" /><bml><gaze target="GRAVE" /></bml></act>

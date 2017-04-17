@@ -38,27 +38,27 @@ var linecount = 0;
 // UPDATE THESE VARIABLES FOR EACH SCRIPT
 // **************************************************************************************
 // which file is formatted as a play-script to be converted to BML
-var inputFileName = "NoisesInputScript.txt";
+var inputFileName = "DOSInputScript-annotated.txt";
 // order of precedence for all characters in scene - 1st is highest priority
-var charprecedence = ["GARRY", "LLOYD", "DOTTY", "BROOKE"];
+var charprecedence = ["LINDA", "BIFF", "CHARLEY", "HAPPY", "BERNARD"];
 
 // all marks, pawns, miscellaneous objects with their translated standardized value
-var locationarray = ["CENTER", "BACK", "UPSTAGE", "DOWNSTAGE", "FORWARD", "BACKWARD", "STAGELEFT", "STAGERIGHT", "RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "LEFT", "CENTERRIGHT", "OUT", "AWAY", "ARMS", "FRONT",  "AHEAD", "FORWARD",  "ROOM", "FRONTDOOR", "STUDY", "NEWSPAPER", "TABLE", "COUCH", "MARK", "PAPER"];
-var translatedlocationarray = ["CENTER", "/BACK", "UPSTAGE", "DOWNSTAGE", "/FORWARD", "/BACK", "STAGELEFT", "STAGERIGHT", "/RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "/LEFT", "CENTERRIGHT", "STAGERIGHT", "STAGERIGHT", "/CURRENT", "AUDIENCE", "AUDIENCE", "AUDIENCE", "/OPPOSITE", "FRONTDOOR", "STUDY", "NEWSPAPER", "TABLE", "COUCH", "MARK", "NEWSPAPER"];
+var locationarray = ["CENTER", "BACK", "UPSTAGE", "DOWNSTAGE", "FORWARD", "BACKWARD", "STAGELEFT", "STAGERIGHT", "RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "LEFT", "IT", "CENTERRIGHT", "GRAVE", "OUT", "AWAY", "ARMS"];
+var translatedlocationarray = ["CENTER", "/BACK", "UPSTAGE", "DOWNSTAGE", "/FORWARD", "/BACK", "STAGELEFT", "STAGERIGHT", "/RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "/LEFT", "/CURRENT", "CENTERRIGHT", "GRAVE", "STAGERIGHT", "STAGERIGHT", "/CURRENT"];
 
 // all characters and pronouns with their translated standardized value
-var chararray = [ "HE", "SHE", "HER", "WHO", "HIS", "GARRY", "LLOYD", "DOTTY", "BROOKE"];
-var translatedchararray = [ "/CURRENT", "DOTTY", "/CURRENT", "/CURRENT", "/CURRENT", "GARRY", "LLOYD", "DOTTY", "BROOKE"];
+var chararray = [ "HE", "SHE", "HER", "WHO", "HIS", "LINDA", "BIFF", "CHARLEY", "HAPPY", "BERNARD"];
+var translatedchararray = [ "/CURRENT", "LINDA", "LINDA", "/CURRENT", "/CURRENT", "LINDA", "BIFF", "CHARLEY", "HAPPY", "BERNARD"];
 
 // all physical locations on stage that person would need to move to, not relative position
-var markarray = ["STUDY", "TABLE", "COUCH", "FRONTDOOR", "MARK"]; //NONE FOR THIS PLAY
+var markarray = ["GRAVE"]; //NONE FOR THIS PLAY
 
 // all movement words related to movement mentioned
-var lookarray = ["LOOK", "TURN", "FACE", "GAZE", "LOOKS", "TO", "STARING", "STARES", "GLANCE", "GLANCES", "BENDS", "PEERS"];
-var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT", "RETURNS", "COMES", "MOVES", "COME", "BRINGS"];
-var pointarray = ["POINT", "GESTURE", "TOUCHES", "HUGS", "WIPES", "POKES", "POKING", "EMBRACES"];
-var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "HOLDS", "PICKS", "GIVES", "TAKES"];// removed with & moves
-var putdownarray = ["PUT", "PLACE", "PUTDOWN", "PUT-DOWN", "SET", "TOSSES", "THROWS", "HANDS", "COVERS", "LAYS"];
+var lookarray = ["LOOK", "TURN", "FACE", "GAZE", "LOOKS", "TO", "STARING", "STARES", "GLANCE", "GLANCES"];
+var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT", "RETURNS", "COMES", "MOVES", "COME"];
+var pointarray = ["POINT", "GESTURE", "PUTS", "TOUCHES", "HUGS"];
+var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "HOLDS", "PICKS", "GIVES"];// removed with & moves
+var putdownarray = ["PUT", "PLACE", "PUTDOWN", "PUT-DOWN", "SET", "TOSSES", "THROWS", "HANDS", "COVERS"];
 var followarray = ["FOLLOW", "FOLLOWED", "FOLLOWING"];
 var followsarray = [ "FOLLOWS"];
 var handoffarray = ["HAND", "HANDS", "GIVES"];
@@ -314,8 +314,8 @@ function startGame() {
 	}
 
 	function readyForNextMsg2(msgnum) {
-		//console.log("Num calls="+numcalls+", msgnum="+msgnum+", curmsg="+curMsg+", curLine="+curLine);
-		//console.log("Removing msg#"+msgnum);
+		console.log("Num calls="+numcalls+", msgnum="+msgnum+", curmsg="+curMsg+", curLine="+curLine);
+		console.log("Removing msg#"+msgnum);
 		numcalls++;
 		var toremove = WAITINGON.indexOf(msgnum);
 		if(toremove != -1) {
@@ -348,13 +348,13 @@ function startGame() {
 					//console.log("ischarline sending "+charContext.name);
 					return charContext.name;
 				} else {
-					//console.log("ischarline sending G1 "+defaultchar.name);
+					//console.log("ischarline sending G1 "+gravedigger1.name);
 					return defaultchar.name;
 // CJT 7/7/16					return gravedigger1.name;
 					// default to G1??
 				}
 			} else {
-				console.log("ischarline sending translated "+ translatedchararray[pos]);
+				//console.log("ischarline sending translated "+ translatedchararray[pos]);
 				return translatedchararray[pos];
 			}
 		}
@@ -366,7 +366,7 @@ function startGame() {
 		var temp = data.replace(" ", "");
 		var pos = locationarray.indexOf(temp);
 		if(pos != -1) {
-			console.log("ispropline sending translated "+ translatedlocationarray[pos]);
+			//console.log("ispropline sending translated "+ translatedlocationarray[pos]);
 			return translatedlocationarray[pos];
 		} else if(temp[0] == '/') {
 			return temp;
@@ -382,7 +382,7 @@ function startGame() {
 
 		var x = (actor.x * 2 / -1) + 2312;
 		var y = (actor.y * 2) + 209;
-		console.log("position="+actor.x+","+actor.y);
+		//console.log("position="+actor.x+","+actor.y);
 		switch (data) {
 			case "/BACK":
 				// find actor's position and facing angle and move 50 backwards
@@ -425,43 +425,6 @@ function startGame() {
 				}
 
 				break;
-			case "/BOX":
-				
-				// find actor's position and pick the box closest to them
-				var dist2 = Math.sqrt((actor.x - box2.x) * (actor.x - box2.x) + (actor.y - box2.y) * (actor.y - box2.y));
-				var dist3 = Math.sqrt((actor.x - box3.x) * (actor.x - box3.x) + (actor.y - box3.y) * (actor.y - box3.y));
-				var dist4 = Math.sqrt((actor.x - box4.x) * (actor.x - box4.x) + (actor.y - box4.y) * (actor.y - box4.y));
-				var dist7 = Math.sqrt((actor.x - box7.x) * (actor.x - box7.x) + (actor.y - box7.y) * (actor.y - box7.y));
-				var dist9 = Math.sqrt((actor.x - box9.x) * (actor.x - box9.x) + (actor.y - box9.y) * (actor.y - box9.y));
-				//console.log("Checking SKULL, 1:" + dist1 + "," + dist2);
-				switch(Math.min(dist2,dist3,dist4,dist7,dist9)) {
-					case dist2:
-						var boxres = {name: "BOX2", x: box2.x, y: box2.y};
-						return box2;
-						break;
-					case dist3:
-						var boxres = {name: "BOX3", x: box3.x, y: box3.y};
-						return box3;
-						break;
-					case dist4:
-						var boxres = {name: "BOX4", x: box4.x, y: box4.y};
-						return box4;;
-						break;
-					case dist7:
-						var boxres = {name: "BOX7", x: box7.x, y: box7.y};
-						return box7;
-						break;
-					case dist9:
-						var boxres = {name: "BOX9", x: box9.x, y: box9.y};
-						return box9;
-						break;
-					default:
-						var boxres = {name: "/BOX", x: box2.x, y: box2.y};
-						return box2;
-						break;
-						
-				}
-				break;
 			case "/OPPOSITE":
 				// find the actor's position and pick point opposite (x direction) from them
 				// 1060 wide, so figure how far from 530
@@ -487,10 +450,10 @@ function startGame() {
 				// return current actor
 				if(charContext != null) {
 					//console.log("in calcposition returning 1 "+ charContext.name);
-					return charContext;
+					return charContext.name;
 				} else {
 					//console.log("in calcposition returning G1 1 "+ gravedigger1.name);
-					return defaultchar;
+					return defaultchar.name;
 // CJT 7/7/16					return gravedigger1.name;
 				}
 				break;
@@ -570,7 +533,7 @@ function startGame() {
 		mvmtlines[thisLine][num][mynum] = word;
 		mytype[thisLine][num][mynum] = type;
 		myctr[thisLine][num]++;
-		//console.log("SETMVMT with:"+thisLine+";"+num+";"+mynum+";"+word+";"+type+";"+basemsgnum);
+		console.log("SETMVMT with:"+thisLine+";"+num+";"+mynum+";"+word+";"+type+";"+basemsgnum);
 		var notready = false;
 		// check if all are populated, else wait some more
 		/*
@@ -584,7 +547,7 @@ function startGame() {
 		//		if (!notready) {
 		if(myctr[thisLine][num] == mvmtlines[thisLine][num].length) {
 			console.log(mvmtlines[thisLine][num]);
-			//console.log(mytype[thisLine][num]);
+			console.log(mytype[thisLine][num]);
 			planmovement(thisLine, num, basemsgnum);
 		}
 
@@ -593,8 +556,6 @@ function startGame() {
 	function translate(thisLine, num, firstverb, actor, target, msgnum) {
 		var best = null;
 		console.log("TRANSLATE with:"+thisLine+";"+num+";"+firstverb+";"+(actor!=null)?(actor.name):("-")+";"+(target != null && target instanceof Array)?(target[0]+","+target[1]):(target.name)+";"+msgnum);
-		console.log("translate: "+mvmtlines[thisLine][num][firstverb]);
-		console.log("translate target="+((target == null)?("null"):(((target instanceof Character || target instanceof Pawn)?(target.name):(target)))));
 		if(mvmtlines[thisLine][num][firstverb] == 'empty') {
 			// skip, can't do anything
 			console.log("ERROR - verb is empty, skipping");
@@ -603,14 +564,14 @@ function startGame() {
 				readyForNextMsg2(xmsgnum); xmsgnum = null;
 			}, 100);
 		} else if(mvmtlines[thisLine][num][firstverb].length == 2) {
-			console.log("translate has synonyms");
+			//console.log("translate has synonyms");
 			best = isActionWord(mvmtlines[thisLine][num][firstverb][0]);
 			//console.log("first syn best="+best);
 			for (i=0; i<mvmtlines[thisLine][num][firstverb][1].length; i++) {
 				if (best == null) {
 					//console.log("setting best");
 					best = isActionWord(mvmtlines[thisLine][num][firstverb][1][i]);
-					console.log("setting best="+best);
+					//console.log("setting best="+best);
 				}
 			}
 			
@@ -621,13 +582,10 @@ function startGame() {
 				}
 			});*/
 		} else {
-			
+			//console.log("translate has no synonyms");
 			best = isActionWord(mvmtlines[thisLine][num][firstverb]);
-			console.log("translate has no synonyms "+best);
 		}
 //console.log("BEST="+best);
-console.log("translate target2="+((target == null)?("null"):(((target instanceof Character || target instanceof Pawn)?(target.name):(target)))));
-		
 		if(target != null && target[0] == '/') {
 			// need to translate the target!!
 			console.log("translating target "+target);
@@ -638,16 +596,10 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 				target = calcPosition(target, actor);
 			}
 			// not going to use position for this - carry over the relative
-			if (findItem('C', target.name) != null) {
-				// do nothing
-			} else {
-				//target = {name: temptargname, x: target.x, y:target.y};
-			}
-			console.log("627CHANGED TARGET="+target.name+":"+target.x+","+target.y);
+			target = {name: temptargname, x: target[0], y:target[1]};
+			console.log("CHANGED TARGET="+target.name);
 
 		}
-		console.log("translate target3="+((target == null)?("null"):(((target instanceof Character || target instanceof Pawn)?(target.name):(target)))));
-		
 		if(!( target instanceof Array) && target != null && target.name[0] != "/") {
 			var temp = findItem('C', target);
 			if(temp == null) {
@@ -657,7 +609,6 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 				target = temp;
 			}
 		}
-		
 //		console.log(target);
 		console.log("In translate, target="+((target == null)?("null"):(((target instanceof Character || target instanceof Pawn)?(target.name):(target)))));
 
@@ -767,22 +718,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					if (actor instanceof Pawn && target instanceof Character) {
 						target.putdown(msgnum, actor, readyForNextMsg2);
 					}else {
-						if (target instanceof Array) {
-							console.log("ERROR!! Array of putdowns");
-							var xmsgnum = msgnum;
-								TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-									readyForNextMsg2(xmsgnum); xmsgnum = null;
-								}, 100);
-						}
-						else if (target instanceof Character) {
-							console.log("ERROR!! Put down char");
-							var xmsgnum = msgnum;
-								TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-									readyForNextMsg2(xmsgnum); xmsgnum = null;
-								}, 100);
-						} else {
-							actor.putdown(msgnum, target, readyForNextMsg2);
-						}
+						actor.putdown(msgnum, target, readyForNextMsg2);
 					}
 				} else {
 					console.log("ERROR!! Trying to put down nothing");
@@ -847,10 +783,8 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 				break;
 			case null:
 				console.log("ERROR - no idea on what the verb is, so ignore?");
-				var xmsgnum = msgnum;
-				
-				TIMEOUTS[TIMEOUTS.length] = setTimeout(function(){readyForNextMsg2(msgnum); xmsgnum = null;},100);
-				//readyForNextMsg2(msgnum);
+				//TIMEOUTS[TIMEOUTS.length] = setTimeout(function(){readyForNextMsg2(msgnum)},100);
+				readyForNextMsg2(msgnum);
 				break;
 			default:
 				// problem!!
@@ -1026,16 +960,12 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 			console.log("target="+target.name);
 			console.log("actor="+actor.name);
 			if (target == actor || target === actor.name || target.name === actor.name || target === "/CURRENT") {
-				//if (actor.name == defaultchar.name) {
-					actor.locomotionTarget(msgnum, defaulttarget, callbackFunc);
-				/*} else {
-					console.log("removed mvmt");
-					target = null;
-					var xmsgnum = msgnum;
-						TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-							callbackFunc(xmsgnum); xmsgnum = null;
-						}, 100);
-				}*/
+				console.log("removed mvmt");
+				target = null;
+				var xmsgnum = msgnum;
+					TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
+						callbackFunc(xmsgnum); xmsgnum = null;
+					}, 100);
 				
 			} else {
 			// just move to the target since we're walking offstage or to a pawn
@@ -1058,7 +988,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		var actor = null;
 		var target = null;
 		var temp = null;
-		//console.log("PlanMVMT with:"+thisLine+";"+num+";"+basemsgnum);
+		console.log("PlanMVMT with:"+thisLine+";"+num+";"+basemsgnum);
 
 		//console.log(firstverb);
 		if (firstverb != -1) {
@@ -1115,7 +1045,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 						tocheck = mvmtlines[thisLine][num][nounindex];
 					}
 					temp = isCharLine(tocheck);
-					console.log("isCharLine = "+temp);
+					//console.log("isCharLine = "+temp);
 					if(temp != null && (index < firstnindex || firstnindex == -1)) {
 						if(firstnindex != -1) {
 							secondnindex = firstnindex;
@@ -1172,39 +1102,15 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 						// have only one noun, so assume we use current context and this as the target
 						if(charContext == null) {
 							actor = defaultchar; // CJT 7/7/16 gravedigger1;
-							console.log("firstverb="+mvmtlines[thisLine][num][firstverb]+","+firstnoun);
-							if (mvmtlines[thisLine][num][firstverb] == "MOVE" && findItem('C', firstnoun) != null ) {
-								target = defaulttarget;
-								
-								actor = findItem('C', firstnoun);
-								firsttype = 'O';
-								firstnoun = defaulttarget.name;
-								console.log("assuming default target1");
-							} else {
-								console.log("assuming character context is gravedigger1");
-							}
+							console.log("assuming character context is gravedigger1");
 						} else {
 							actor = charContext;
-							if (mvmtlines[thisLine][num][firstverb] == "MOVE" && findItem('C', firstnoun) != null ) {
-								target = defaulttarget;
-								actor = findItem('C', firstnoun);
-								firsttype = 'O';
-								firstnoun = defaulttarget.name;
-								console.log("assuming default target2");
-							} else {
-								console.log("assuming character context is context char");
-							}
 						}
 						if(firstnoun[0] == '/') {
 							target = calcPosition(firstnoun, actor);
-							//target = findItem( 'O', temptarget);
 							// not going to use position for this - carry over the relative
-							if (findItem('C', target.name) != null) {
-								// do nothing
-							} else {
-								//target = {name: firstnoun, x: target.x, y:target.y};
-							}
-							console.log("1143CHANGED TARGET="+target.name);
+							target = {name: firstnoun, x: target[0], y:target[1]};
+							console.log("CHANGED TARGET="+target.name);
 						} else {
 							target = findItem(firsttype, firstnoun);
 						}
@@ -1221,22 +1127,13 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					}
 				} else {
 					// have two nouns, so lets use them!!
-					if (firstnoun[0] == "/")  {
-						actor = calcPosition(firstnoun, defaultchar);
-						actor = findItem('C', actor.name);
-						if (actor != null) {
-							firsttype = 'C';
-						}
-					} else {
-						actor = findItem(firsttype, firstnoun);
-					}
+					actor = findItem(firsttype, firstnoun);
 					//TODO: 
-					if (actor == null || firsttype != 'C') { // if first & second nouns are both objects, then assume current char for context & first noun found is the target
+					if (firsttype != 'C') { // if first & second nouns are both objects, then assume current char for context & first noun found is the target
 						actor = charContext;
 						secondnindex = firstnindex;
 						secondnoun = firstnoun;
 						secondtype = firsttype;
-						console.log("updated second noun to"+mvmtlines[thisLine][num][secondnindex]);
 					}
 					if(actor == null) {
 						console.log("ERROR - couldn't find actor despite it being of type " + firsttype + "," + firstnoun);
@@ -1248,12 +1145,8 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					} else {
 						if(secondnoun[0] == '/') {
 							target = calcPosition(secondnoun, actor);
-							if (findItem('C', target.name) != null) {
-								// do nothing
-							} else {
-								//target = {name: secondnoun, x: target.x, y:target.y};
-							}
-							console.log("1179CHANGED TARGET="+target.name);
+							target = {name: secondnoun, x: target[0], y:target[1]};
+							console.log("CHANGED TARGET="+target.name);
 						} else {
 							target = findItem(secondtype, secondnoun);
 						}
@@ -2037,19 +1930,11 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 	}
 
 	function findItem(type, name) {
-		
-		console.log("findingItem="+name);
-		if (name != null && name[0] == "/") {
-			// lookup this name before doing search
-			temp = calcPosition(name, defaultchar);
-			name = temp.name;
-		}
-		console.log("Updated findingitem="+name);
 		if(type == 'C') {
 			// loop through all chars
 			for(var i = 0; i < characters.length; i++) {
 				if(characters[i].name == name) {
-					console.log("finditem C gives "+name);
+					//console.log("finditem C gives "+name);
 					return characters[i];
 				}
 			}
@@ -2057,13 +1942,13 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 			// loop through all objects
 			for(var j = 0; j < pawns.length; j++) {
 				if(pawns[j].name == name) {
-					console.log("finditem O gives "+name);
+					//console.log("finditem O gives "+name);
 					return pawns[j];
 				}
 			}
 		}
 		// error!!
-		console.log("couldn't find " + type + " with name=" + name);
+		//console.log("couldn't find " + type + " with name=" + name);
 		return null;
 	}
 
@@ -2290,7 +2175,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		this.locomotionPt = function(msgnum, x, y, callbackFunc) {
 			// assume x & y are arrays so can go to multiple points in one call
 			
-			
+			writeToLog(this.name, "locomotionPt", x, y, null, null);
 							var targetAngle = 0;
 			if (this.moveTo != null) {
 				var xthis = this;
@@ -2302,7 +2187,6 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.locomotionPt(xmsgnum, xx, xy, xcallbackFunc); xthis = null; xmsgnum = null; xy = null; xx = null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				writeToLog(this.name, "locomotionPt", x, y, null, null);
 				var myrand = Math.random();
 				/*if (this.name == HUMAN && myrand >= ACCURACY) {
 					// if this is the human, then do full movement if > accuracy, else do 50% of movement
@@ -2381,7 +2265,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		}
 
 		this.locomotionTarget = function(msgnum, item, callbackFunc) {
-			
+			writeToLog(this.name, "locomotion", null, null, item.name, null);
 				var targetx = 0;
 				var targety = 0;
 				var targetAngle = 0;
@@ -2395,65 +2279,53 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.locomotionTarget(xmsgnum, xitem, xcallbackFunc); xthis = null; xmsgnum = null; xitem = null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				if (item.name == this.name) {
-					console.log("Moving to self - cancel move");
-					var xcallbackFunc = callbackFunc;
-						var xmsgnum = msgnum;
-						TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-							xcallbackFunc(xmsgnum);
-							xcallbackFunc = null;
-							xmsgnum = null;
-						}, 100);
-				} else {
-					writeToLog(this.name, "locomotion", null, null, item.name, null); // so only write once if already moving
-					var myrand = Math.random();
-					/*if (this.name == HUMAN && myrand >= ACCURACY) {
-						// if this is the human, then do full movement if > accuracy, else do 50% of movement
-						
-						//if (myrand >= ACCURACY) {
-							var myrandx = Math.random();
-							var myrandy = Math.random();
-							// change my x & y!!
-							targetx = 1059*myrandx;
-							targety = 916*myrandy;
-							targetAngle = Math.atan2(this.y - targety, targetx - this.x) + Math.PI / 2;
-							console.log("going halfway to target "+item.name+":"+targetx+","+targety+":"+targetAngle);
-						//}
-					} else {*/
-						// stop just before reaching target by 44 if item is person, by 10 if object
-						 targetAngle = 0;
-						var isCharacter = ( item instanceof Character);
-						targetAngle = Math.atan2(this.y - item.y, item.x - this.x) + Math.PI / 2;
-						//Math.atan2(this.y - y, x - this.x) + Math.PI/2;
-						this.moveTo = item;
-						
-						//this.turnSome(msgnum, 'M', targetAngle, function() {
-						// look in direction moving
-						//this.angleold = this.angle;
-						//this.angle = targetAngle;
-						 targetx = 0;
-						 targety = 0;
-						var distance = Math.sqrt(((xthis.x - item.x) * (xthis.x - item.x)) + ((xthis.y - item.y) * (xthis.y - item.y)));
-						if(isCharacter) {
-							// update target to within 44
-							distance = distance - (characterSize * 2);
-							targetx = xthis.x + (distance * Math.sin(targetAngle));
-							targety = xthis.y + (distance * Math.cos(targetAngle));
-						} else {
-							// update target to within 10
-							distance = distance - objectSize - characterSize;
-							targetx = xthis.x + (distance * Math.sin(targetAngle));
-							targety = xthis.y + (distance * Math.cos(targetAngle));
-						}
-						// call the first step
+				var myrand = Math.random();
+				/*if (this.name == HUMAN && myrand >= ACCURACY) {
+					// if this is the human, then do full movement if > accuracy, else do 50% of movement
+					
+					//if (myrand >= ACCURACY) {
+						var myrandx = Math.random();
+						var myrandy = Math.random();
+						// change my x & y!!
+						targetx = 1059*myrandx;
+						targety = 916*myrandy;
+						targetAngle = Math.atan2(this.y - targety, targetx - this.x) + Math.PI / 2;
+						console.log("going halfway to target "+item.name+":"+targetx+","+targety+":"+targetAngle);
 					//}
-		
-					//this.gazeTo = null;
-					xthis.Step(msgnum, targetx, targety, targetAngle, callbackFunc);
-					xthis = null;
-					//});
-					createUpdMsg("CHAR", this);
-				}
+				} else {*/
+					// stop just before reaching target by 44 if item is person, by 10 if object
+					 targetAngle = 0;
+					var isCharacter = ( item instanceof Character);
+					targetAngle = Math.atan2(this.y - item.y, item.x - this.x) + Math.PI / 2;
+					//Math.atan2(this.y - y, x - this.x) + Math.PI/2;
+					this.moveTo = item;
+					
+					//this.turnSome(msgnum, 'M', targetAngle, function() {
+					// look in direction moving
+					//this.angleold = this.angle;
+					//this.angle = targetAngle;
+					 targetx = 0;
+					 targety = 0;
+					var distance = Math.sqrt(((xthis.x - item.x) * (xthis.x - item.x)) + ((xthis.y - item.y) * (xthis.y - item.y)));
+					if(isCharacter) {
+						// update target to within 44
+						distance = distance - (characterSize * 2);
+						targetx = xthis.x + (distance * Math.sin(targetAngle));
+						targety = xthis.y + (distance * Math.cos(targetAngle));
+					} else {
+						// update target to within 10
+						distance = distance - objectSize - characterSize;
+						targetx = xthis.x + (distance * Math.sin(targetAngle));
+						targety = xthis.y + (distance * Math.cos(targetAngle));
+					}
+					// call the first step
+				//}
+	
+				//this.gazeTo = null;
+				xthis.Step(msgnum, targetx, targety, targetAngle, callbackFunc);
+				xthis = null;
+				//});
+				createUpdMsg("CHAR", this);
 			}
 		}
 
@@ -2491,7 +2363,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		}
 
 		this.lookAtPt = function(msgnum, x, y, callbackFunc) {
-			
+			writeToLog(this.name, "gazept", x, y, null, null);
 			if (this.turning) {
 				var xthis = this;
 				var xmsgnum = msgnum;
@@ -2502,7 +2374,6 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.lookAtPt(xmsgnum, xx, xy, xcallbackFunc); xthis = null; xmsgnum = null; xy = null; xx = null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				writeToLog(this.name, "gazept", x, y, null, null);
 				x = -1 * (x - 2312) / 2;
 				// cleanup values
 				y = (y - 209) / 2;
@@ -2532,11 +2403,10 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 			// if turn amount is > 180 from current, then turn right - else turn left since angle goes in counterclockwise direction increasing
 			//console.log(this.name + " curangle="+this.angle+", targetangle="+targetAngle);
 			// check if target moved & update targetAngle based on that
-			//console.log("turnsome-"+type+"="+this.gazeTo.name);
 			var temp;
 			//var targetAngle;
 			if(type == 'G') {
-				if(this.gazeTo instanceof Character || this.gazeTo instanceof Pawn || this.gazeTo.name[0] =="/") {
+				if(this.gazeTo instanceof Character || this.gazeTo instanceof Pawn) {
 					targetAngle = Math.atan2(this.y - this.gazeTo.y, this.gazeTo.x - this.x) + Math.PI / 2;
 					//Math.atan2(this.y - y, x - this.x) + Math.PI/2;
 					//console.log("char gaze: target angle updated to "+targetAngle);
@@ -2551,8 +2421,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 				targetAngle = targetAngle + Math.PI * 2;
 				//console.log("smaller: target angle to:"+targetAngle);
 			}
-			//console.log("COMPARE="+this.angle+"--"+targetAngle);
-			if(Number(this.angle.toFixed(2)) == Number(targetAngle.toFixed(2))) {
+			if(this.angle == targetAngle) {
 				// done - stop moving!
 				//console.log("Done looking");
 				this.turning = false;
@@ -2572,7 +2441,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					} else {
 						temp = this.angle - turnDist;
 					}
-						//console.log("more than 180, temp="+temp);
+					//	console.log("more than 180, temp="+temp);
 					/*	// check to see if you passed it & if so, make temp = targetAngle
 					 if (temp < 0) {
 					 temp = temp + Math.PI*2;
@@ -2592,7 +2461,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 						this.angleold = this.angle;
 						this.angle = temp;
 					}
-						//console.log("angle updated to:"+this.angle);
+					//	console.log("angle updated to:"+this.angle);
 					var xthis = this;
 					var xmsgnum = msgnum;
 					var xtype = type;
@@ -2613,7 +2482,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					} else {
 						temp = this.angle + turnDist;
 					}
-					//console.log("2less than 180, temp="+temp);
+					//console.log("less than 180, temp="+temp);
 					// check to see if you passed it & if so, make temp = targetAngle
 					/*if (temp > Math.PI*2) {
 					 temp = temp - Math.PI*2;
@@ -2633,7 +2502,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 						this.angleold = this.angle;
 						this.angle = temp;
 					}
-						//console.log("2angle updated to:"+this.angle);
+					//	console.log("angle updated to:"+this.angle);
 					var xthis = this;
 					var xmsgnum = msgnum;
 					var xtype = type;
@@ -2655,8 +2524,8 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		}
 
 		this.lookAtTarget = function(msgnum, item, callbackFunc) {
-			
-			//console.log("looking by "+this.name+"-"+item.name+"="+this.turning);
+			writeToLog(this.name, "gaze", null, null, item.name, null);
+			//console.log("looking by "+this.name);
 			if (this.turning) {
 				var xthis = this;
 				var xmsgnum = msgnum;
@@ -2666,44 +2535,30 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.lookAtTarget(xmsgnum, xitem, xcallbackFunc); xthis = null; xmsgnum = null; xitem = null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				if (this.name == item.name) {
-					console.log("look at self - cancel");
-					var xcallbackFunc = callbackFunc;
-						var xmsgnum = msgnum;
-						TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-							xcallbackFunc(xmsgnum);
-							xcallbackFunc = null;
-							xmsgnum = null;
-						}, 100);
+				var x = -1 * (item.x - 2312) / 2;
+				// cleanup values
+				var y = (item.y - 209) / 2;
+				var targetAngle = Math.atan2(this.y - y, item.x - x) + Math.PI / 2;
+				this.turning = true;
+				//			this.angleold = this.angle;
+				//			this.angle = Math.atan2(this.y - item.y, item.x - this.x) + Math.PI/2;
+				this.gazeTo = item;
+				if(this.angle != targetAngle) {
+					this.turnSome(msgnum, 'G', targetAngle, callbackFunc);
 				} else {
-					//console.log("item post="+item.x+","+item.y);
-					writeToLog(this.name, "gaze", null, null, item.name, null); // moved here so doesn't write while waiting
-					var x = -1 * (item.x - 2312) / 2;
-					// cleanup values
-					var y = (item.y - 209) / 2;
-					var targetAngle = Math.atan2(this.y - y, item.x - x) + Math.PI / 2;
-					this.turning = true;
-					//			this.angleold = this.angle;
-					//			this.angle = Math.atan2(this.y - item.y, item.x - this.x) + Math.PI/2;
-					this.gazeTo = item;
-					if(this.angle != targetAngle) {
-						//console.log("Targetangle="+targetAngle);
-						this.turnSome(msgnum, 'G', targetAngle, callbackFunc);
-					} else {
-						//console.log("already looking, cancelling");
-						this.turning = false;
-						//callbackFunc(msgnum);
-						var xcallbackFunc = callbackFunc;
-						var xmsgnum = msgnum;
-						TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-							xcallbackFunc(xmsgnum);
-							xcallbackFunc = null;
-							xmsgnum = null;
-						}, 100);
-					}
-					//			TIMEOUTS[TIMEOUTS.length] = setTimeout(function(){callbackFunc(msgnum)},lookatTime);
-					createUpdMsg("CHAR", this);
+					//console.log("already looking, cancelling");
+					this.turning = false;
+					//callbackFunc(msgnum);
+					var xcallbackFunc = callbackFunc;
+					var xmsgnum = msgnum;
+					TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
+						xcallbackFunc(xmsgnum);
+						xcallbackFunc = null;
+						xmsgnum = null;
+					}, 100);
 				}
+				//			TIMEOUTS[TIMEOUTS.length] = setTimeout(function(){callbackFunc(msgnum)},lookatTime);
+				createUpdMsg("CHAR", this);
 			}
 		}
 
@@ -2716,7 +2571,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		}
 
 		this.pointAtPoint = function(msgnum, x, y, callbackFunc) {
-			
+			writeToLog(this.name, "pointpt", x, y, null, null);
 			if (this.pointTo != null) {
 				var xthis = this;
 				var xmsgnum = msgnum;
@@ -2727,7 +2582,6 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.pointAtPoint(xmsgnum, xx, xy, xcallbackFunc); xthis = null; xmsgnum = null; xx = null; xy=null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				writeToLog(this.name, "pointpt", x, y, null, null);
 				// find the angle to the point & save as this.pointAngle
 				x = -1 * (x - 2312) / 2;
 				// cleanup points
@@ -2753,7 +2607,7 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 		}
 
 		this.pointAtTarget = function(msgnum, item, callbackFunc) {
-			
+			writeToLog(this.name, "point", null, null, item.name, null);
 			if (this.pointTo != null) {
 				var xthis = this;
 				var xmsgnum = msgnum;
@@ -2763,7 +2617,6 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 					xthis.pointAtTarget(xmsgnum, xitem, xcallbackFunc); xthis = null; xmsgnum = null; xitem = null; xcallbackFunc = null;
 				}, 65);
 			} else {
-				writeToLog(this.name, "point", null, null, item.name, null); // so only shows up once
 				// find the angle to the item & save as this.pointAngle
 				this.pointToold = this.pointTo;
 				this.pointAngleold = this.pointAngle;
@@ -2954,32 +2807,30 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 	var stageleft = new Pawn('STAGELEFT', 193, 1020, '255,255,255', '255,255,255', false);
 	var centerright = new Pawn('CENTERRIGHT', 1900, 1020, '255,255,255', '255,255,255', false);
 	
-	var newspaper = new Pawn('NEWSPAPER', 1050.03, 1251.46, '0, 0, 0', '234, 234, 234', true);
-	//var stool = new Pawn('STUDY', 1522.25, 988.60, '0, 0, 0', '234, 234, 234', true);
-	//var cloth = new Pawn('CLOTH', 955.59, 857.17, '0, 0, 0', '234, 234, 234', true);
-	//var dish = new Pawn('DISH', 1050.03, 988.60, '0, 0, 0', '234, 234, 234', true);
-	
-	var frontdoor = new Pawn('FRONTDOOR', 1050.03, 200.03, '255,255,255', '255,255,255', false);
-	var study = new Pawn('STUDY', 861.14, 200.03, '255,255,255', '255,255,255', false);
-	var table = new Pawn('TABLE', 955.59, 1251.46, '255,255,255', '255,255,255', false);
-	var couch = new Pawn('COUCH', 1238.92, 1251.46, '255,255,255', '255,255,255', false);
-	var mark = new Pawn('MARK', 1238.92, 800, '255,255,255', '255,255,255', false);
-
+/*	var table = new Pawn('TABLE', 1050.03, 988.60, '0, 0, 0', '234, 234, 234', true);
+	var stool = new Pawn('STOOL', 1522.25, 988.60, '0, 0, 0', '234, 234, 234', true);
+	var cloth = new Pawn('CLOTH', 955.59, 857.17, '0, 0, 0', '234, 234, 234', true);
+	var dish = new Pawn('DISH', 1050.03, 988.60, '0, 0, 0', '234, 234, 234', true);
+*/
+	var grave = new Pawn('GRAVE', 1050.03, 1777.17, '255,255,255', '255,255,255', false);
+/*	var table = new Pawn('TABLE', 483.36, 857.17, '255,255,255', '255,255,255', false);
+	var door = new Pawn('DOOR', 200.03, 1514.32, '255,255,255', '255,255,255', false);
+*/
 	// create characters
 
-	var garry = new Character('GARRY', 1050.03, 68.60, 0, '135,206,250', '0,0,128');
-	var lloyd = new Character('LLOYD', 1994.47, 1777.17, 0, '171,130,255', '85,26,139');
-	var dotty = new Character('DOTTY', 861.14, 200.03, 0, '0,205,0', '0,100,0');
-	var brooke = new Character('BROOKE', 1050.03, 16.03, 0, '233,150,122', '139,69,0');
-	//var lopakhin = new Character('LOPAKHIN', 1522.25, 1461.74, 0, '233,150,122', '139,69,0');
-	//var varya = new Character('VARYA', 105.59, 1645.74, 0, '233,150,122', '139,69,0');
-
+	var linda = new Character('LINDA', 1050.03, 1645.74, 0, '135,206,250', '0,0,128');
+	var biff = new Character('BIFF', 1002.81, 1645.74, 0, '171,130,255', '85,26,139');
+	var charley = new Character('CHARLEY', 1097.25, 1645.74, 0, '0,205,0', '0,100,0');
+	var happy = new Character('HAPPY', 955.59, 1645.74, 0, '233,150,122', '139,69,0');
+	var bernard = new Character('BERNARD', 1144.47, 1645.74, 0, '233,150,122', '139,69,0');
+/*	var varya = new Character('VARYA', 105.59, 1645.74, 0, '233,150,122', '139,69,0');
+*/
 	// who to default context to if no context person defined yet
-	var defaultchar = garry;
-	var defaulttarget = mark;
+	var defaultchar = charley;
+	var defaulttarget = grave;
 	
 	// all physical objects and people to be represented in the UI
-	var mynames = ["GARRY", "LLOYD", "DOTTY", "BROOKE", "NEWSPAPER"];
+	var mynames = ["LINDA", "BIFF", "CHARLEY", "HAPPY", "BERNARD"];
 	
 // ****************************************************************************************************
 // ****************************************************************************************************	

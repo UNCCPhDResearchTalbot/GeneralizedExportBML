@@ -1,0 +1,1 @@
+N	MOVE	BROOKE	GARRY	<?xml version="1.0" encoding="UTF-8" standalone="no" ?><act><participant id="BROOKE" role="actor" /><bml><locomotion sbm:follow="GARRY" type="basic" manner="walk" proximity="50"/></bml></act>

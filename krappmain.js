@@ -38,26 +38,26 @@ var linecount = 0;
 // UPDATE THESE VARIABLES FOR EACH SCRIPT
 // **************************************************************************************
 // which file is formatted as a play-script to be converted to BML
-var inputFileName = "NoisesInputScript.txt";
+var inputFileName = "KrappInputScript-annotated.txt";
 // order of precedence for all characters in scene - 1st is highest priority
-var charprecedence = ["GARRY", "LLOYD", "DOTTY", "BROOKE"];
+var charprecedence = ["KRAPP"];
 
 // all marks, pawns, miscellaneous objects with their translated standardized value
-var locationarray = ["CENTER", "BACK", "UPSTAGE", "DOWNSTAGE", "FORWARD", "BACKWARD", "STAGELEFT", "STAGERIGHT", "RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "LEFT", "CENTERRIGHT", "OUT", "AWAY", "ARMS", "FRONT",  "AHEAD", "FORWARD",  "ROOM", "FRONTDOOR", "STUDY", "NEWSPAPER", "TABLE", "COUCH", "MARK", "PAPER"];
-var translatedlocationarray = ["CENTER", "/BACK", "UPSTAGE", "DOWNSTAGE", "/FORWARD", "/BACK", "STAGELEFT", "STAGERIGHT", "/RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "/LEFT", "CENTERRIGHT", "STAGERIGHT", "STAGERIGHT", "/CURRENT", "AUDIENCE", "AUDIENCE", "AUDIENCE", "/OPPOSITE", "FRONTDOOR", "STUDY", "NEWSPAPER", "TABLE", "COUCH", "MARK", "NEWSPAPER"];
+var locationarray = ["CENTER", "BACK", "UPSTAGE", "DOWNSTAGE", "FORWARD", "BACKWARD", "STAGELEFT", "STAGERIGHT", "RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "LEFT", "IT", "CENTERRIGHT", "OUT", "AWAY", "ARMS", "FRONT", "BOXES", "BOX", "BOOK", "BOOKS", "SPOOL", "TABLE", "LEDGER", "SPOOL5", "TAPEPLAYER", "BOX2", "BOX3", "BOX4", "BOX7", "BOX9", "SPOOLS", "AHEAD", "FORWARD"];
+var translatedlocationarray = ["CENTER", "/BACK", "UPSTAGE", "DOWNSTAGE", "/FORWARD", "/BACK", "STAGELEFT", "STAGERIGHT", "/RIGHT", "CENTERBACKSTAGE", "AUDIENCE", "/LEFT", "/CURRENT", "CENTERRIGHT", "STAGERIGHT", "STAGERIGHT", "/CURRENT", "AUDIENCE", "/BOX", "/BOX", "/BOX", "/BOX", "SPOOL5", "TABLE", "LEDGER", "SPOOL5", "TAPEPLAYER", "BOX2", "BOX3", "BOX4", "BOX7", "BOX9", "SPOOL5", "AUDIENCE", "AUDIENCE"];
 
 // all characters and pronouns with their translated standardized value
-var chararray = [ "HE", "SHE", "HER", "WHO", "HIS", "GARRY", "LLOYD", "DOTTY", "BROOKE"];
-var translatedchararray = [ "/CURRENT", "DOTTY", "/CURRENT", "/CURRENT", "/CURRENT", "GARRY", "LLOYD", "DOTTY", "BROOKE"];
+var chararray = [ "HE", "SHE", "HER", "WHO", "HIS", "KRAPP", "MOUTH", "THEM"];
+var translatedchararray = [ "/CURRENT", "/CURRENT", "/CURRENT", "/CURRENT", "/CURRENT", "KRAPP", "/CURRENT", "/CURRENT"];
 
 // all physical locations on stage that person would need to move to, not relative position
-var markarray = ["STUDY", "TABLE", "COUCH", "FRONTDOOR", "MARK"]; //NONE FOR THIS PLAY
+var markarray = ["TABLE"]; //NONE FOR THIS PLAY
 
 // all movement words related to movement mentioned
 var lookarray = ["LOOK", "TURN", "FACE", "GAZE", "LOOKS", "TO", "STARING", "STARES", "GLANCE", "GLANCES", "BENDS", "PEERS"];
-var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT", "RETURNS", "COMES", "MOVES", "COME", "BRINGS"];
-var pointarray = ["POINT", "GESTURE", "TOUCHES", "HUGS", "WIPES", "POKES", "POKING", "EMBRACES"];
-var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "HOLDS", "PICKS", "GIVES", "TAKES"];// removed with & moves
+var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT", "RETURNS", "COMES", "MOVES", "COME"];
+var pointarray = ["POINT", "GESTURE", "TOUCHES", "HUGS", "WIPES", "POKES", "POKING"];
+var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "HOLDS", "PICKS", "GIVES"];// removed with & moves
 var putdownarray = ["PUT", "PLACE", "PUTDOWN", "PUT-DOWN", "SET", "TOSSES", "THROWS", "HANDS", "COVERS", "LAYS"];
 var followarray = ["FOLLOW", "FOLLOWED", "FOLLOWING"];
 var followsarray = [ "FOLLOWS"];
@@ -338,17 +338,17 @@ function startGame() {
 	// CJT 7/7/16 deleted logging
 	
 	function isCharLine(data) {
-		//console.log("isCharLine, data="+data+"+");
+		console.log("isCharLine, data="+data+"+");
 
 		var temp = data.replace(" ", "");
 		var pos = chararray.indexOf(temp);
 		if(pos != -1) {
 			if(translatedchararray[pos] == "/CURRENT") {
 				if(charContext != null) {
-					//console.log("ischarline sending "+charContext.name);
+					console.log("ischarline sending "+charContext.name);
 					return charContext.name;
 				} else {
-					//console.log("ischarline sending G1 "+defaultchar.name);
+					console.log("ischarline sending G1 "+gravedigger1.name);
 					return defaultchar.name;
 // CJT 7/7/16					return gravedigger1.name;
 					// default to G1??
@@ -1026,16 +1026,12 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 			console.log("target="+target.name);
 			console.log("actor="+actor.name);
 			if (target == actor || target === actor.name || target.name === actor.name || target === "/CURRENT") {
-				//if (actor.name == defaultchar.name) {
-					actor.locomotionTarget(msgnum, defaulttarget, callbackFunc);
-				/*} else {
-					console.log("removed mvmt");
-					target = null;
-					var xmsgnum = msgnum;
-						TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
-							callbackFunc(xmsgnum); xmsgnum = null;
-						}, 100);
-				}*/
+				console.log("removed mvmt");
+				target = null;
+				var xmsgnum = msgnum;
+					TIMEOUTS[TIMEOUTS.length] = setTimeout(function() {
+						callbackFunc(xmsgnum); xmsgnum = null;
+					}, 100);
 				
 			} else {
 			// just move to the target since we're walking offstage or to a pawn
@@ -1172,28 +1168,9 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 						// have only one noun, so assume we use current context and this as the target
 						if(charContext == null) {
 							actor = defaultchar; // CJT 7/7/16 gravedigger1;
-							console.log("firstverb="+mvmtlines[thisLine][num][firstverb]+","+firstnoun);
-							if (mvmtlines[thisLine][num][firstverb] == "MOVE" && findItem('C', firstnoun) != null ) {
-								target = defaulttarget;
-								
-								actor = findItem('C', firstnoun);
-								firsttype = 'O';
-								firstnoun = defaulttarget.name;
-								console.log("assuming default target1");
-							} else {
-								console.log("assuming character context is gravedigger1");
-							}
+							console.log("assuming character context is gravedigger1");
 						} else {
 							actor = charContext;
-							if (mvmtlines[thisLine][num][firstverb] == "MOVE" && findItem('C', firstnoun) != null ) {
-								target = defaulttarget;
-								actor = findItem('C', firstnoun);
-								firsttype = 'O';
-								firstnoun = defaulttarget.name;
-								console.log("assuming default target2");
-							} else {
-								console.log("assuming character context is context char");
-							}
 						}
 						if(firstnoun[0] == '/') {
 							target = calcPosition(firstnoun, actor);
@@ -2954,32 +2931,36 @@ console.log("translate target2="+((target == null)?("null"):(((target instanceof
 	var stageleft = new Pawn('STAGELEFT', 193, 1020, '255,255,255', '255,255,255', false);
 	var centerright = new Pawn('CENTERRIGHT', 1900, 1020, '255,255,255', '255,255,255', false);
 	
-	var newspaper = new Pawn('NEWSPAPER', 1050.03, 1251.46, '0, 0, 0', '234, 234, 234', true);
-	//var stool = new Pawn('STUDY', 1522.25, 988.60, '0, 0, 0', '234, 234, 234', true);
-	//var cloth = new Pawn('CLOTH', 955.59, 857.17, '0, 0, 0', '234, 234, 234', true);
-	//var dish = new Pawn('DISH', 1050.03, 988.60, '0, 0, 0', '234, 234, 234', true);
-	
-	var frontdoor = new Pawn('FRONTDOOR', 1050.03, 200.03, '255,255,255', '255,255,255', false);
-	var study = new Pawn('STUDY', 861.14, 200.03, '255,255,255', '255,255,255', false);
-	var table = new Pawn('TABLE', 955.59, 1251.46, '255,255,255', '255,255,255', false);
-	var couch = new Pawn('COUCH', 1238.92, 1251.46, '255,255,255', '255,255,255', false);
-	var mark = new Pawn('MARK', 1238.92, 800, '255,255,255', '255,255,255', false);
+	var box2 = new Pawn('BOX2', 1012.25, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var box3 = new Pawn('BOX3', 861.14, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var box4 = new Pawn('BOX4', 974.47, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var box7 = new Pawn('BOX7', 936.70, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var box9 = new Pawn('BOX9', 898.92, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var ledger = new Pawn('LEDGER', 1087.81, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var spool5 = new Pawn('SPOOL5', 861.14, 1435.46, '0, 0, 0', '234, 234, 234', true);
+	var tapeplayer = new Pawn('TAPEPLAYER', 823.36, 1435.46, '0, 0, 0', '234, 234, 234', true);
 
+
+
+	var table = new Pawn('TABLE', 1050.03, 1435.46, '255,255,255', '255,255,255', false);
+/*	var table = new Pawn('TABLE', 483.36, 857.17, '255,255,255', '255,255,255', false);
+	var door = new Pawn('DOOR', 200.03, 1514.32, '255,255,255', '255,255,255', false);
+*/
 	// create characters
 
-	var garry = new Character('GARRY', 1050.03, 68.60, 0, '135,206,250', '0,0,128');
-	var lloyd = new Character('LLOYD', 1994.47, 1777.17, 0, '171,130,255', '85,26,139');
-	var dotty = new Character('DOTTY', 861.14, 200.03, 0, '0,205,0', '0,100,0');
-	var brooke = new Character('BROOKE', 1050.03, 16.03, 0, '233,150,122', '139,69,0');
-	//var lopakhin = new Character('LOPAKHIN', 1522.25, 1461.74, 0, '233,150,122', '139,69,0');
-	//var varya = new Character('VARYA', 105.59, 1645.74, 0, '233,150,122', '139,69,0');
-
+	var krapp = new Character('KRAPP', 1050.03, 1382.89, 0, '135,206,250', '0,0,128');
+/*	var biff = new Character('BIFF', 1002.81, 1645.74, 0, '171,130,255', '85,26,139');
+	var charley = new Character('CHARLEY', 1097.25, 1645.74, 0, '0,205,0', '0,100,0');
+	var happy = new Character('HAPPY', 955.59, 1645.74, 0, '233,150,122', '139,69,0');
+	var bernard = new Character('BERNARD', 1144.47, 1645.74, 0, '233,150,122', '139,69,0');
+/*	var varya = new Character('VARYA', 105.59, 1645.74, 0, '233,150,122', '139,69,0');
+*/
 	// who to default context to if no context person defined yet
-	var defaultchar = garry;
-	var defaulttarget = mark;
+	var defaultchar = krapp;
+	var defaulttarget = box2;
 	
 	// all physical objects and people to be represented in the UI
-	var mynames = ["GARRY", "LLOYD", "DOTTY", "BROOKE", "NEWSPAPER"];
+	var mynames = ["KRAPP", "TABLE", "BOX2", "BOX3", "BOX4", "BOX7", "BOX9", "LEDGER", "SPOOL5", "TAPEPLAYER"];
 	
 // ****************************************************************************************************
 // ****************************************************************************************************	

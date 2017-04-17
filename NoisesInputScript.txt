@@ -1,20 +1,23 @@
-(Enter BROOKE through the FRONTDOOR. She is a desirable property in her early twenties, well-built and beautifully maintained throughout)
+(GARRY enters, followed by BROOKE)
 
 GARRY
 So we've got the place entirely to ourselves.
 
 LLOYD
 Hold it, BROOKE. DOTTY!
-(Enter DOTTY from the study)
+(Enter DOTTY)
+(LLOYD also enters)
 
 DOTTY 
 Come back?
 
 LLOYD 
 Yes, and go out again with the newspaper.
+(GARRY picks up the newspaper, and GARRY brings it to Dotty)
 
 DOTTY 
 The newspaper? Oh, the newspaper.
+(DOTTY takes the newspaper from GARRY)
 
 LLOYD 
 You put the receiver back, you leave the sardines, and you go out with the newspaper.
@@ -112,7 +115,7 @@ Lloyd, let me just say one thing. Since we've stopped. I've worked with a lot of
 LLOYD 
 Thank you, Garry. I'm very touched. Now will you get off the fucking stage?
 
-(Exit GARRY through the FRONTDOOR)
+(Exit GARRY through the FRONTDOOR.  DOTTY goes to the table, and she puts down the newspaper)
 
 And, BROOKE ...
 
@@ -135,3 +138,4 @@ LLOYD
 You're out. OK. I'll call again. And on we go.
 
 (Exit BROOKE through the FRONTDOOR)
+(Exit LLOYD stageright)

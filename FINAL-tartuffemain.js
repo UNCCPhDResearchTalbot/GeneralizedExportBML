@@ -38,7 +38,7 @@ var linecount = 0;
 // UPDATE THESE VARIABLES FOR EACH SCRIPT
 // **************************************************************************************
 // which file is formatted as a play-script to be converted to BML
-var inputFileName = "TartuffeInputScript.txt";
+var inputFileName = "TartuffeInputScript-annotated.txt";
 // order of precedence for all characters in scene - 1st is highest priority
 var charprecedence = ["ELMIRE", "ORGON"];
 
@@ -55,10 +55,10 @@ var markarray = []; //NONE FOR THIS PLAY
 
 // all movement words related to movement mentioned
 var lookarray = ["LOOK", "TURN", "FACE", "GAZE", "LOOKS", "TO"];
-var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT"];
-var pointarray = ["POINT", "GESTURE"];
-var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "WITH", "HOLDS", "PICKS", "GIVES"];
-var putdownarray = ["PUT", "PLACE", "PUTDOWN", "PUT-DOWN", "SET", "TOSSES", "THROWS", "HANDS"];
+var walkarray = ["WALK", "GO", "MOVE", "ENTER", "CROSS", "CROSSES", "STEP", "STEPS", "EXITS", "GOES", "BESIDE", "TO", "SITS", "ENTERS", "EXIT", "RETURNS"];
+var pointarray = ["POINT", "GESTURE", "PUTS"];
+var pickuparray = ["PICK", "PICKUP", "LIFT", "PICK-UP", "CARRY", "CARRYING", "CARRIES", "WITH", "HOLDS", "PICKS", "GIVES", "MOVES"];
+var putdownarray = ["PUT", "PLACE", "PUTDOWN", "PUT-DOWN", "SET", "TOSSES", "THROWS", "HANDS", "COVERS"];
 var followarray = ["FOLLOW", "FOLLOWED", "FOLLOWING", "FOLLOWS"];
 var handoffarray = ["HAND", "HANDS", "GIVES"];
 var relativearray = ["AT", "BEHIND", "UNDER"];
@@ -387,9 +387,11 @@ function startGame() {
 				return result;
 				break;
 			case "/FORWARD":
-				// find actor's position and facing angle and move 50 forwards
-				result[0] = x + ((50) * Math.sin(actor.angle));
-				result[1] = y + ((50) * Math.cos(actor.angle));
+				// find actor's position and facing angle and move 50 forwards - towards audience? 
+				//result[0] = x + ((50) * Math.sin(actor.angle));
+				//result[1] = y + ((50) * Math.cos(actor.angle));
+				result[0] = x;
+				result[1] = y + 550;
 				return result;
 				break;
 			case "/RIGHT":
@@ -580,14 +582,18 @@ function startGame() {
 		if(target != null && target[0] == '/') {
 			// need to translate the target!!
 			//console.log("translating target "+target);
+			var temptargname = target;
 			if(best == "FOLLOW") {
 				target = calcPosition(actor, target);
 			} else {
 				target = calcPosition(target, actor);
 			}
+			// not going to use position for this - carry over the relative
+			target = {name: temptargname, x: target[0], y:target[1]};
+			console.log("CHANGED TARGET="+target.name);
 
 		}
-		if(!( target instanceof Array) && target != null) {
+		if(!( target instanceof Array) && target != null && target.name[0] != "/") {
 			var temp = findItem('C', target);
 			if(temp == null) {
 				temp = findItem('O', target);
@@ -609,7 +615,23 @@ function startGame() {
 				} else if(target != null) {
 					console.log(actor.name + " MOVE " + (( target instanceof Character || target instanceof Pawn) ? (target.name) : (target))  +" readyForNextMsg2");
 					if (target instanceof Character ||(target instanceof Pawn && (target.moveable || target.name == 'GRAVE' || target.name == 'STEPS' || target.name == 'STOOL'))) {
-						actor.locomotionTarget(msgnum, target, readyForNextMsg2);
+						// if have descriptive of "around" target, then make two movement commands - one to other side of target, then back to current position
+						var interimtarget = null;
+						var temp = [actor.x, actor.y];
+						console.log("mvmt 2nd to last word="+mvmtlines[thisLine][num]);
+						console.log("actor position="+actor.x+","+actor.y);
+						console.log("target position="+target.x+","+target.y);
+						if (mvmtlines[thisLine][num][mvmtlines[thisLine][num].length-2] == "AROUND") {
+							interimtarget = [temp[0] - (2*(temp[0] - target.x)), temp[1] - (2*(temp[1] - target.y))];
+							console.log("interim target found");
+						}
+						if (interimtarget !=null) {
+							//actor.locomotionPt(msgnum, interimtarget[0], interimtarget[1], function() {actor.locomotionPt(msgnum, temp[0], temp[1], readyForNextMsg2);});	
+							var mytarg = {name: "/AROUND "+target.name, x: interimtarget[0], y: interimtarget[1]};
+							actor.locomotionTarget(msgnum, mytarg, readyForNextMsg2);
+						} else {
+							actor.locomotionTarget(msgnum, target, readyForNextMsg2);
+						}
 					} else {
 						checkmovetarget(actor, msgnum, target, readyForNextMsg2);
 					}
@@ -644,12 +666,29 @@ function startGame() {
 				if(target != null) {
 					console.log(actor.name + " PICK " + (( target instanceof Character || target instanceof Pawn) ? (target.name) : (target)));
 					// if not at target, walk to it first, then pick it up
+					var newtarget = null; // if is a pickup and putdown command
+					if (mvmtlines[thisLine][num].length > 3) {
+						newtarget = calcPosition(mvmtlines[thisLine][num][3], actor);
+					}
 					if (distance(actor.x, actor.y, target.x, target.y) > characterSize+objectSize) {
 						//console.log("locomotion readyForNextMsg2");
-						actor.locomotionTarget(msgnum, target, function() {actor.pickup(msgnum, target, readyForNextMsg2);});
+						// check if this should include a putdown too - ie there's an extra location mentioned after "MOVES"
+						
+						if (newtarget !=null) {
+							//actor.locomotionTarget(msgnum, target, function() {actor.pickup(msgnum, target, function() {actor.locomotionPt(msgnum, newtarget[0], newtarget[1], function() {actor.putdown(msgnum, target, readyForNextMsg2);});});});
+							var mytarg = {name: mvmtlines[thisLine][num][3] + " "+target.name, x: newtarget[0], y: newtarget[1]};
+							actor.pickup(msgnum, mytarg, readyForNextMsg2);
+							
+						} else {
+							actor.locomotionTarget(msgnum, target, function() {actor.pickup(msgnum, target, readyForNextMsg2);});
+						}
 						//actor.pickup(msgnum, target, readyForNextMsg2);
 					} else {
-						actor.pickup(msgnum, target, readyForNextMsg2);
+						if (newtarget != null) {
+							actor.pickup(msgnum, target, function() {actor.locomotionPt(msgnum, newtarget[0], newtarget[1], function() {actor.putdown(msgnum, target, readyForNextMsg2);});});
+						} else {
+							actor.pickup(msgnum, target, readyForNextMsg2);
+						}
 					}
 				} else {
 					console.log("ERROR!! Trying to pick up nothing");
@@ -1024,6 +1063,9 @@ function startGame() {
 						}
 						if(firstnoun[0] == '/') {
 							target = calcPosition(firstnoun, actor);
+							// not going to use position for this - carry over the relative
+							target = {name: firstnoun, x: target[0], y:target[1]};
+							console.log("CHANGED TARGET="+target.name);
 						} else {
 							target = findItem(firsttype, firstnoun);
 						}
@@ -1058,6 +1100,8 @@ function startGame() {
 					} else {
 						if(secondnoun[0] == '/') {
 							target = calcPosition(secondnoun, actor);
+							target = {name: secondnoun, x: target[0], y:target[1]};
+							console.log("CHANGED TARGET="+target.name);
 						} else {
 							target = findItem(secondtype, secondnoun);
 						}
@@ -1159,7 +1203,13 @@ function startGame() {
 								//mynum = null;
 							} else {
 								if(results != undefined && results != null && results.length > 0) {
-									setmvmtlines(thisLine, num, mynum, "empty", results[0].pos, basemsgnum);
+									// save "AROUND"
+									console.log("AROUND--"+results[0].pos+"--word="+word);
+									if (results[0].pos == 'r' && word == "AROUND") {
+										setmvmtlines(thisLine, num, mynum, [word], results[0].pos, basemsgnum);
+									} else {
+										setmvmtlines(thisLine, num, mynum, "empty", results[0].pos, basemsgnum);
+									}
 								} else {
 									setmvmtlines(thisLine, num, mynum, "empty", 'o', basemsgnum);
 								}
